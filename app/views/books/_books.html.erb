@@ -1,0 +1,19 @@
+<h2>User info</h2>
+
+      <% if current_user.image.attached? %>
+        <%= image_tag current_user.image, size: "100x100" %>
+      <% else %>
+        <%= image_tag 'default-image', size: "100x100" %>
+      <% end %>
+      <table class = "table">
+        <tbody>
+          <tr>
+            <td>name</td>
+            <td><%= current_user.name %></td>
+          </tr>
+          <tr>
+            <td>introduction</td>
+            <td><%= current_user.introduction %></td>
+          </tr>
+        </tbody>
+      </table>
