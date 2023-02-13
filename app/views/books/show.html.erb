@@ -1,8 +1,15 @@
 <div class = "container px-5 px-sm-0">
+  <% if @book.errors.any? %>
+    <%= @book.errors.count %>errors prohibited this obj from being saved:
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
   <div class = "row">
     <div class = "col-md-3">
-      <%= render 'books' %>
-
+      <%= render 'books', user: @user %>
 
       <h2 class = "mt-3">New book</h2>
 
@@ -21,7 +28,7 @@
       <table class = "table">
         <tbody>
             <tr>
-              <td><%= image_tag @book.user.get_image(80, 80) %><br>
+              <td><%= image_tag @book.user.get_profile_image(80, 80) %><br>
               <%= link_to @book.user.name, user_path(@book.user.id) %></td>
               <td><%= link_to @book.title, book_path(@book) %></td>
               <td><%= @book.body %></td>
